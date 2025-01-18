@@ -7,4 +7,287 @@
     android:layout_height="match_parent"
     tools:context=".SimulatorActivity">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5060827" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.500684" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="332dp"
+        android:layout_height="63dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.107">
+
+        <TextView
+            android:id="@+id/textViewNewClients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nuevo grupo de clientes: ¿Cuántos son?" />
+
+        <EditText
+            android:id="@+id/editTextNumClients"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Nº personas"
+            android:inputType="number" />
+
+        <ImageButton
+            android:id="@+id/buttonConfirmNumClients"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:contentDescription="Confirmar clientes"
+            app:srcCompat="?android:attr/textCheckMark" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="Día" />
+
+        <TextView
+            android:id="@+id/textViewHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="Hora: " />
+
+        <TextView
+            android:id="@+id/textViewOpenedClosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:text="Abierto" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:id="@+id/row1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonTable1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 1"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 2"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 3"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 4"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonTable5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 5"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 6"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 7"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 8"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonTable9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 9"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 10"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable11"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 11"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 12"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/imageButtonTable13"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 13"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable14"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 14"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/ImageButtonTable15"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 15"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+
+            <ImageButton
+                android:id="@+id/imageButtonTable16"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:contentDescription="Mesa 16"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/unoccupied_table" />
+        </TableRow>
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
