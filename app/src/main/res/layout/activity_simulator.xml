@@ -70,6 +70,7 @@
             android:layout_marginStart="4dp"
             android:backgroundTint="@android:color/holo_green_dark"
             android:contentDescription="Confirmar clientes"
+            android:onClick="confirmNumClients"
             app:srcCompat="?android:attr/textCheckMark" />
     </LinearLayout>
 
@@ -89,22 +90,19 @@
             android:id="@+id/textViewDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:text="Día" />
+            android:layout_marginHorizontal="30dp" />
 
         <TextView
             android:id="@+id/textViewHour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:text="Hora: " />
+            android:layout_marginHorizontal="30dp" />
 
         <TextView
             android:id="@+id/textViewOpenedClosed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:text="Abierto" />
+            android:layout_marginHorizontal="30dp" />
     </LinearLayout>
 
     <TableLayout
@@ -129,6 +127,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 1"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -138,6 +137,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 2"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -147,6 +147,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 3"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -156,6 +157,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 4"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
         </TableRow>
@@ -172,6 +174,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 5"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -181,6 +184,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 6"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -190,6 +194,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 7"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -199,6 +204,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 8"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
         </TableRow>
@@ -215,6 +221,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 9"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -224,6 +231,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 10"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -233,6 +241,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 11"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -242,6 +251,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 12"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
         </TableRow>
@@ -258,6 +268,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 13"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -267,15 +278,17 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 14"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
             <ImageButton
-                android:id="@+id/ImageButtonTable15"
+                android:id="@+id/imageButtonTable15"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 15"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
 
@@ -285,6 +298,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:contentDescription="Mesa 16"
+                android:onClick="showTableInfo"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/unoccupied_table" />
         </TableRow>
