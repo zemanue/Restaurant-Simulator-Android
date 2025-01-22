@@ -36,46 +36,7 @@
         app:layout_constraintGuide_percent="0.500684" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="332dp"
-        android:layout_height="63dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.107">
-
-        <TextView
-            android:id="@+id/textViewNewClients"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Nuevo grupo de clientes: ¿Cuántos son?" />
-
-        <EditText
-            android:id="@+id/editTextNumClients"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Nº personas"
-            android:inputType="number" />
-
-        <ImageButton
-            android:id="@+id/buttonConfirmNumClients"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="4dp"
-            android:backgroundTint="@android:color/holo_green_dark"
-            android:contentDescription="Confirmar clientes"
-            android:onClick="confirmNumClients"
-            app:srcCompat="?android:attr/textCheckMark" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayoutBasicInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -103,6 +64,45 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutClients"
+        android:layout_width="332dp"
+        android:layout_height="63dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutBasicInfo"
+        app:layout_constraintVertical_bias="0.107">
+
+        <TextView
+            android:id="@+id/textViewNewClients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Nuevo grupo de clientes: ¿Cuántos son?" />
+
+        <EditText
+            android:id="@+id/editTextNumClients"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Nº personas"
+            android:inputType="number" />
+
+        <ImageButton
+            android:id="@+id/buttonConfirmNumClients"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:contentDescription="Confirmar clientes"
+            android:onClick="confirmNumClients"
+            app:srcCompat="?android:attr/textCheckMark" />
     </LinearLayout>
 
     <TableLayout
