@@ -15,10 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SimulatorActivity extends AppCompatActivity {
 
-    private static final int openingHour = 13;
-    private static int currentHour = openingHour;
-    private static final int closingHour = 21;
-    private static int day = 1;
+    Restaurant myRestaurant = new Restaurant();
 
     TextView textViewDay, textViewHour, textViewOpenedClosed;
     EditText editTextNumClients;
@@ -39,13 +36,13 @@ public class SimulatorActivity extends AppCompatActivity {
         });
 
         textViewDay = findViewById(R.id.textViewDay);
-        textViewDay.setText("Día: " + day);
+        textViewDay.setText("Día: " + myRestaurant.getDay());
 
         textViewHour = findViewById(R.id.textViewHour);
-        textViewHour.setText("Hora: " + currentHour + ":00 ");
+        textViewHour.setText("Hora: " + myRestaurant.getCurrentHour() + ":00 ");
 
         textViewOpenedClosed = findViewById(R.id.textViewOpenedClosed);
-        textViewOpenedClosed.setText("Abierto");
+        textViewOpenedClosed.setText((myRestaurant.isOpened()) ? "Abierto" : "Cerrado");
 
         editTextNumClients = findViewById(R.id.editTextNumClients);
 
