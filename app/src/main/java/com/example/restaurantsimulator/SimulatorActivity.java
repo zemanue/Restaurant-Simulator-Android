@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +20,6 @@ public class SimulatorActivity extends AppCompatActivity {
 
     TextView textViewDay, textViewHour, textViewOpenedClosed;
     EditText editTextNumClients;
-    ImageButton imageButtonTable1, imageButtonTable2, imageButtonTable3, imageButtonTable4,
-            imageButtonTable5, imageButtonTable6, imageButtonTable7, imageButtonTable8,
-            imageButtonTable9, imageButtonTable10, imageButtonTable11,imageButtonTable12,
-            imageButtonTable13, imageButtonTable14, imageButtonTable15, imageButtonTable16;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +32,7 @@ public class SimulatorActivity extends AppCompatActivity {
             return insets;
         });
 
+        // BASIC INFO SECTION (DAY, HOUR, OPENED/CLOSED)
         textViewDay = findViewById(R.id.textViewDay);
         textViewDay.setText("Día: " + myRestaurant.getDay());
 
@@ -44,26 +42,25 @@ public class SimulatorActivity extends AppCompatActivity {
         textViewOpenedClosed = findViewById(R.id.textViewOpenedClosed);
         textViewOpenedClosed.setText((myRestaurant.isOpened()) ? "Abierto" : "Cerrado");
 
+        // CLIENTS SECTION
         editTextNumClients = findViewById(R.id.editTextNumClients);
 
-        // Buttons of all tables
-        imageButtonTable1 = findViewById(R.id.imageButtonTable1);
-        imageButtonTable2 = findViewById(R.id.imageButtonTable2);
-        imageButtonTable3 = findViewById(R.id.imageButtonTable3);
-        imageButtonTable4 = findViewById(R.id.imageButtonTable4);
-        imageButtonTable5 = findViewById(R.id.imageButtonTable5);
-        imageButtonTable6 = findViewById(R.id.imageButtonTable6);
-        imageButtonTable7 = findViewById(R.id.imageButtonTable7);
-        imageButtonTable8 = findViewById(R.id.imageButtonTable8);
-        imageButtonTable9 = findViewById(R.id.imageButtonTable9);
-        imageButtonTable10 = findViewById(R.id.imageButtonTable10);
-        imageButtonTable11 = findViewById(R.id.imageButtonTable11);
-        imageButtonTable12 = findViewById(R.id.imageButtonTable12);
-        imageButtonTable13 = findViewById(R.id.imageButtonTable13);
-        imageButtonTable14 = findViewById(R.id.imageButtonTable14);
-        imageButtonTable15 = findViewById(R.id.imageButtonTable15);
-        imageButtonTable16 = findViewById(R.id.imageButtonTable16);
+        // TABLE INITIALIZATION
+        final int[] TABLE_CAPACITIES = {2, 2, 2, 2, 2, 4, 4, 4, 10, 6, 2, 2, 6, 4, 8, 12};
+        final boolean[] TABLE_AVAILABILITIES = {false, false, false, true, true, true, false, false, true, true, false, false, false, true, true, true};
 
+        myRestaurant.initializeTables(TABLE_CAPACITIES, TABLE_AVAILABILITIES);
+
+        // TABLE BUTTONS SETUP
+        TableLayout tableLayout = findViewById(R.id.tableLayout);
+
+        for (int i = 0; i < myRestaurant.getTableList().size(); i++) {
+            Table table = myRestaurant.getTableList().get(i);
+            ImageButton imageButton = (ImageButton) tableLayout.findViewWithTag("table_" + (i + 1));
+            if (imageButton != null) {
+                imageButton.setOnClickListener(v -> showTableInfo(table)); // Pass the Table object
+            }
+        }
 
     }
 
@@ -74,8 +71,8 @@ public class SimulatorActivity extends AppCompatActivity {
         Toast.makeText(this, String.valueOf(numClients), Toast.LENGTH_SHORT).show();
     }
 
-    public void showTableInfo(View v) {
-        String tableNumber = v.getContentDescription().toString();
-        Toast.makeText(this, tableNumber, Toast.LENGTH_LONG).show();
+    public void showTableInfo(Table table) {
+        String tableInfo = table.getDetails();
+        Toast.makeText(this, tableInfo, Toast.LENGTH_LONG).show();
     }
 }
