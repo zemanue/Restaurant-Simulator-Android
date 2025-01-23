@@ -7,7 +7,7 @@ public class Table implements Comparable<Table> {
     Random random = new Random();
     private int tableNumber;
     private boolean nextToWindow;
-    private boolean occupied;
+    private boolean available;
     private int maxCapacity;
     private Customer[] peopleSeated;
     private int occupiedSeats;
@@ -34,12 +34,12 @@ public class Table implements Comparable<Table> {
         this.nextToWindow = nextToTheWindow;
     }
 
-    public boolean isOccupied() {
-        return occupied;
+    public boolean isAvailable() {
+        return available;
     }
 
-    public void setOccupied(boolean occupied) {
-        this.occupied = occupied;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 
     public int getMaxCapacity() {
@@ -102,7 +102,7 @@ public class Table implements Comparable<Table> {
     public Table(int tableNumber) {
         this.tableNumber = tableNumber;
         this.nextToWindow = false;
-        this.occupied = false;
+        this.available = true;
         this.maxCapacity = 2;
         this.peopleSeated = new Customer[this.maxCapacity];
         this.occupiedSeats = 0;
@@ -112,7 +112,7 @@ public class Table implements Comparable<Table> {
         this.tableNumber = tableNumber;
         this.nextToWindow = false;
         this.maxCapacity = maxCapacity;
-        this.occupied = false;
+        this.available = true;
         this.peopleSeated = new Customer[maxCapacity];
         this.occupiedSeats = 0;
     }
@@ -121,7 +121,7 @@ public class Table implements Comparable<Table> {
         this.tableNumber = tableNumber;
         this.nextToWindow = nextToTheWindow;
         this.maxCapacity = maxCapacity;
-        this.occupied = false;
+        this.available = true;
         this.peopleSeated = new Customer[maxCapacity];
         this.occupiedSeats = 0;
     }
@@ -131,10 +131,10 @@ public class Table implements Comparable<Table> {
         return "Mesa " + tableNumber;
     }
 
-    public String showDetails() {
+    public String getDetails() {
         StringBuilder sb = new StringBuilder();
         sb.append("Mesa " + tableNumber);
-        sb.append((occupied) ? ", ocupada por: " + occupiedSeats + " personas" : "");
+        sb.append((available) ? ", disponible" : ", ocupada por: " + occupiedSeats + " personas");
         sb.append(". Capacidad máxima: " + maxCapacity);
         sb.append((nextToWindow) ? ", Ventana" : ", No ventana");
         return sb.toString();
@@ -149,7 +149,7 @@ public class Table implements Comparable<Table> {
                     + maxCapacity + " personas.");
             return false;
         } else {
-            this.occupied = true;
+            this.available = true;
             this.occupiedSeats = customerGroup.size();
             this.peopleSeated = customerGroup.toArray(new Customer[customerGroup.size()]);
             this.timeOccupied = 0;
@@ -161,7 +161,7 @@ public class Table implements Comparable<Table> {
                 totalTips += customer.calculateTip();
             }
 
-            System.out.println(this.showDetails());
+            System.out.println(this.getDetails());
             System.out.println("");
             return true;
         }
@@ -196,7 +196,7 @@ public class Table implements Comparable<Table> {
     }
 
     public void incrementTimeOccupied() {
-        if (occupied) {
+        if (available) {
             timeOccupied++;
             if (timeOccupied >= random.nextInt(4) + 1) {
                 freeTable(true);
@@ -208,7 +208,7 @@ public class Table implements Comparable<Table> {
     }
 
     public void freeTable(boolean message) {
-        if (!occupied) {
+        if (!available) {
             System.out.println("La mesa " + tableNumber + " ya está libre.");
             return;
         }
@@ -225,13 +225,13 @@ public class Table implements Comparable<Table> {
             }
             peopleSeated[i] = null;
         }
-        if (message && occupied) {
+        if (message && available) {
             System.out.println("- Satisfacción media: " + calculateAverageSatisfaction() + "/5");
             System.out.println("- Total gastado por el grupo: " + totalSpending + " euros");
             double tipPercentage = Math.round((totalTips / totalSpending) * 1000.0) / 10.0;
             System.out.println("- Propina recibida: " + totalTips + " euros (" + tipPercentage + "% del total)");
         }
-        this.occupied = false;
+        this.available = false;
         this.occupiedSeats = 0;
         this.timeOccupied = 0;
         this.tableSatisfaction = 0;
