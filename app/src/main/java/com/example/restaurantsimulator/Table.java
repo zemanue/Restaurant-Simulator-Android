@@ -145,11 +145,11 @@ public class Table implements Comparable<Table> {
             System.out.println("Error: El número de personas debe ser mayor a 0");
             return false;
         } else if (customerGroup.size() > maxCapacity) {
-            System.out.println(this.toString() + " no adjudicada: Esta mesa tiene capacidad máxima para "
+            System.out.println(this + " no adjudicada: Esta mesa tiene capacidad máxima para "
                     + maxCapacity + " personas.");
             return false;
         } else {
-            this.available = true;
+            this.available = false;
             this.occupiedSeats = customerGroup.size();
             this.peopleSeated = customerGroup.toArray(new Customer[customerGroup.size()]);
             this.timeOccupied = 0;
@@ -196,7 +196,7 @@ public class Table implements Comparable<Table> {
     }
 
     public void incrementTimeOccupied() {
-        if (available) {
+        if (!available) {
             timeOccupied++;
             if (timeOccupied >= random.nextInt(4) + 1) {
                 freeTable(true);
@@ -208,7 +208,7 @@ public class Table implements Comparable<Table> {
     }
 
     public void freeTable(boolean message) {
-        if (!available) {
+        if (available) {
             System.out.println("La mesa " + tableNumber + " ya está libre.");
             return;
         }
@@ -225,13 +225,13 @@ public class Table implements Comparable<Table> {
             }
             peopleSeated[i] = null;
         }
-        if (message && available) {
+        if (message && !available) {
             System.out.println("- Satisfacción media: " + calculateAverageSatisfaction() + "/5");
             System.out.println("- Total gastado por el grupo: " + totalSpending + " euros");
             double tipPercentage = Math.round((totalTips / totalSpending) * 1000.0) / 10.0;
             System.out.println("- Propina recibida: " + totalTips + " euros (" + tipPercentage + "% del total)");
         }
-        this.available = false;
+        this.available = true;
         this.occupiedSeats = 0;
         this.timeOccupied = 0;
         this.tableSatisfaction = 0;

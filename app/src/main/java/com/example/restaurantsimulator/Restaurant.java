@@ -110,4 +110,62 @@ public class Restaurant {
         Collections.sort(tableListCapacityOrder);
     }
 
+    public static int findSuitableTable(int people) {
+        ArrayList<Customer> customerGroup = new ArrayList<>();
+        // Create the customers and check if they prefer the window
+        int customerPrefersWindow = 0;
+        for (int i = 0; i < people; i++) {
+            Customer customer = new Customer();
+            customerGroup.add(customer);
+            if (customer.getPrefersWindow()) {
+                customerPrefersWindow++;
+            }
+        }
+        // Try to assign a table next to the window (if half of the customers or more
+        // prefer window)
+        if (customerPrefersWindow >= Math.ceil(people / 2)) {
+//            statistics.incrementWindowPreference();
+            System.out.println("Los clientes prefieren una mesa junto a la ventana. Buscando...");
+            for (Table table : tableListCapacityOrder) {
+                if (table.isAvailable()
+                        && table.getMaxCapacity() >= people
+                        && table.getMaxCapacity() <= people + 2
+                        && table.isNextToWindow()) {
+
+                    System.out.println("Mesa junto a la ventana encontrada: ");
+//                    statistics.incrementTimesWindowPreferenceGiven();
+                    table.occupyTable(customerGroup);
+//                    statistics.incrementOccupiedTables();
+//                    statistics.addCustomer(people);
+//                    statistics.addEarnings(table.getTotalSpending());
+//                    statistics.addTips(table.getTotalTips());
+                    return table.getTableNumber();
+                }
+            }
+            System.out.println("No hay mesas disponibles junto a la ventana. Se buscará una libre.");
+//            statistics.incrementTimesWithoutTable();
+        } else {
+            System.out.println("A los clientes no les importa dónde sentarse. Buscando la primera disponible...");
+        }
+
+        // If it doesn't work, a regular table will try to be assigned
+        for (Table table : tableListCapacityOrder) {
+            if (table.isAvailable()
+                    && table.getMaxCapacity() >= people
+                    && table.getMaxCapacity() <= people + 2) {
+                System.out.println("Mesa encontrada: ");
+                table.occupyTable(customerGroup);
+//                statistics.incrementOccupiedTables();
+//                statistics.addCustomer(people);
+//                statistics.addEarnings(table.getTotalSpending());
+//                statistics.addTips(table.getTotalTips());
+                return table.getTableNumber();
+            }
+        }
+        System.out.println("'Lo siento, no quedan mesas disponibles para " + people + " personas. Vuelvan más tarde.'");
+        System.out.println();
+        return 0;
+    }
+
+
 }
