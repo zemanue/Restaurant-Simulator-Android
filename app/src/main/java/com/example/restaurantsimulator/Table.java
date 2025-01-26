@@ -207,10 +207,10 @@ public class Table implements Comparable<Table> {
         }
     }
 
-    public void freeTable(boolean message) {
+    public boolean freeTable(boolean message) {
         if (available) {
             System.out.println("La mesa " + tableNumber + " ya está libre.");
-            return;
+            return false;
         }
         if (message) {
             System.out.println("Mesa " + tableNumber + " liberada.");
@@ -235,6 +235,7 @@ public class Table implements Comparable<Table> {
         this.occupiedSeats = 0;
         this.timeOccupied = 0;
         this.tableSatisfaction = 0;
+        return true;
     }
 
     public double calculateAverageSatisfaction() {

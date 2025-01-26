@@ -19,7 +19,7 @@ public class SimulatorActivity extends AppCompatActivity {
     Restaurant myRestaurant = new Restaurant();
 
     TextView textViewDay, textViewHour, textViewOpenedClosed;
-    EditText editTextNumClients;
+    EditText editTextNumClients, editTextTableNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,9 @@ public class SimulatorActivity extends AppCompatActivity {
         textViewOpenedClosed = findViewById(R.id.textViewOpenedClosed);
         textViewOpenedClosed.setText((myRestaurant.isOpened()) ? "Abierto" : "Cerrado");
 
-        // CLIENTS SECTION
+        // CLIENTS AND TABLE SECTION
         editTextNumClients = findViewById(R.id.editTextNumClients);
+        editTextTableNumber = findViewById(R.id.editTextTableNumber);
 
         // TABLE INITIALIZATION
         final int[] TABLE_CAPACITIES = {2, 2, 2, 2, 2, 4, 4, 4, 10, 6, 2, 2, 6, 4, 8, 12};
@@ -75,6 +76,20 @@ public class SimulatorActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "No quedan mesas disponibles para este número de clientes.", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void confirmFreeTable(View v) {
+        String textFromEditText = editTextTableNumber.getText().toString();
+        int tableNumber = Integer.parseInt(textFromEditText);
+        Table table = myRestaurant.getTableList().get(tableNumber - 1);
+        if (table.freeTable(false)) {
+            Toast.makeText(this, "Mesa liberada: " + tableNumber, Toast.LENGTH_SHORT).show();
+            ImageButton imageButton = findViewById(R.id.tableLayout).findViewWithTag("table_" + tableNumber);
+            imageButton.setImageResource(R.drawable.unoccupied_table);
+        } else {
+            Toast.makeText(this, "Esta mesa ya está libre " + tableNumber, Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void showTableInfo(Table table) {

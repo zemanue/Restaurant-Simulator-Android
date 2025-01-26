@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutBasicInfo"
-        app:layout_constraintVertical_bias="0.107">
+        app:layout_constraintVertical_bias="0.03">
 
         <TextView
             android:id="@+id/textViewNewClients"
@@ -304,5 +304,43 @@
                 app:srcCompat="@drawable/unoccupied_table" />
         </TableRow>
     </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/linearTableSelection"
+        android:layout_width="332dp"
+        android:layout_height="63dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/tableLayout"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayoutClients"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutClients"
+        app:layout_constraintVertical_bias="0.5">
+
+        <TextView
+            android:id="@+id/textViewFreeTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Liberar mesa: introduce su número" />
+
+        <EditText
+            android:id="@+id/editTextTableNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Mesa"
+            android:inputType="number" />
+
+        <ImageButton
+            android:id="@+id/buttonFreeTable"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:contentDescription="Confirmar clientes"
+            android:onClick="confirmFreeTable"
+            app:srcCompat="?android:attr/textCheckMark" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
